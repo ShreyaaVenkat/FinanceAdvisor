@@ -1,0 +1,14 @@
+amount,category,date,type,description
+5500.00,Income,2026-06-01,income,Monthly Salary Payroll Inflow
+1500.00,Housing,2026-06-02,expense,Monthly Apartment Rent
+185.50,Groceries,2026-06-03,expense,Kroger Supermarket Grocery Run
+14.99,Subscriptions,2026-06-04,expense,Netflix Monthly Subscription
+9.99,Subscriptions,2026-06-04,expense,Spotify Premium Membership
+42.30,Transport,2026-06-05,expense,Shell Gas Station Fuel
+65.00,Dining Out,2026-06-06,expense,Sushi Restaurant Dinner with Friends
+120.00,Utilities,2026-06-07,expense,Electric Bill Utility Payment
+250.00,Income,2026-06-10,income,Freelance Development Dividend Inflow
+85.20,Shopping,2026-06-12,expense,Amazon Prime Purchase
+45.00,Subscriptions,2026-06-14,expense,Gold Gym Monthly Membership Fee
+35.40,Dining Out,2026-06-15,expense,Starbucks Coffee and Bakery
+12.00,Transport,2026-06-16,expense,City Subway Transit Pass

@@ -1,0 +1,29 @@
+# Python ignores
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+venv/
+.venv/
+env/
+.env
+backend/app.db
+backend/test.db
+
+# Node/React ignores
+node_modules/
+dist/
+.vite/
+.eslintcache
+
+# Local editor settings
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
