@@ -2,6 +2,105 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
 
+// SVG Vector Icons
+const DiamondIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="brand-logo">
+    <path d="M6 3h12l4 6-10 13L2 9z" />
+    <path d="M11 3 8 9l4 13 4-13-3-6" />
+    <path d="M2 9h20" />
+  </svg>
+);
+
+const DashboardIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect width="7" height="9" x="3" y="3" rx="1" />
+    <rect width="7" height="5" x="14" y="3" rx="1" />
+    <rect width="7" height="9" x="14" y="12" rx="1" />
+    <rect width="7" height="5" x="3" y="16" rx="1" />
+  </svg>
+);
+
+const TransactionsIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect width="20" height="14" x="2" y="5" rx="2" />
+    <line x1="2" x2="22" y1="10" y2="10" />
+    <path d="M16 14h.01M12 14h.01M8 14h.01" />
+  </svg>
+);
+
+const BudgetsIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
+    <path d="M6 6h10" />
+    <path d="M6 10h10" />
+  </svg>
+);
+
+const GoalsIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <circle cx="12" cy="12" r="6" />
+    <circle cx="12" cy="12" r="2" />
+  </svg>
+);
+
+const RiskProfileIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+    <circle cx="12" cy="7" r="4" />
+  </svg>
+);
+
+const LogoutIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+    <polyline points="16 17 21 12 16 7" />
+    <line x1="21" x2="9" y1="12" y2="12" />
+  </svg>
+);
+
+const SparklesIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+  </svg>
+);
+
+const ChatIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+  </svg>
+);
+
+const TrashIcon = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--accent-rose)' }}>
+    <path d="M3 6h18" />
+    <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+    <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+  </svg>
+);
+
+const EditIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline', marginRight: '4px', verticalAlign: 'middle' }}>
+    <path d="M12 20h9" />
+    <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+  </svg>
+);
+
+const UploadIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline', marginRight: '6px' }}>
+    <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
+    <path d="M12 12v9" />
+    <path d="m16 16-4-4-4 4" />
+  </svg>
+);
+
+const TrendingUpIcon = () => (
+  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--primary)' }}>
+    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+    <polyline points="16 7 22 7 22 13" />
+  </svg>
+);
+
 export default function App() {
   // Authentication State
   const [token, setToken] = useState(localStorage.getItem('token') || '');
@@ -63,7 +162,6 @@ export default function App() {
       });
 
       if (response.status === 401) {
-        // Clear auth on token expiration
         handleLogout();
         throw new Error('Session expired. Please log in again.');
       }
@@ -88,7 +186,6 @@ export default function App() {
 
     try {
       if (isLoginView) {
-        // Login flow
         const formData = new FormData();
         formData.append('username', authEmail);
         formData.append('password', authPassword);
@@ -104,7 +201,6 @@ export default function App() {
         setEmail(authEmail);
         showToast('Successfully logged in!', 'success');
       } else {
-        // Register flow
         await apiFetch('/auth/register', {
           method: 'POST',
           body: JSON.stringify({ email: authEmail, password: authPassword }),
@@ -163,8 +259,6 @@ export default function App() {
       const data = await apiFetch('/advisor/compile', { method: 'POST' });
       setAdvisorReport(data.reply);
       showToast('AI Advisory Report compiled!', 'success');
-      
-      // Re-fetch data because compiling auto-calculates spent budget amounts
       fetchData();
     } catch (err) {
       showToast('Failed to compile advice: ' + err.message, 'error');
@@ -217,8 +311,6 @@ export default function App() {
       setTransactions((prev) => [added, ...prev]);
       setNewTx({ amount: '', category: 'Dining Out', date: new Date().toISOString().split('T')[0], type: 'expense', description: '' });
       showToast('Transaction added!');
-      
-      // Auto compile report to update stats
       compileAdvisory();
     } catch (err) {
       showToast(err.message, 'error');
@@ -268,7 +360,6 @@ export default function App() {
           limit_amount: parseFloat(newBudget.limit_amount),
         }),
       });
-      // Replace or insert
       setBudgets((prev) => {
         const filtered = prev.filter((b) => b.category !== added.category);
         return [...filtered, added];
@@ -367,7 +458,7 @@ export default function App() {
   const netSavings = totalIncome - totalExpense;
   const savingsRate = totalIncome > 0 ? (netSavings / totalIncome) * 100 : 0;
 
-  // Group expenses by category for css chart
+  // Group expenses by category
   const expenseCategories = {};
   transactions
     .filter((t) => t.type === 'expense')
@@ -377,15 +468,113 @@ export default function App() {
 
   const maxCategoryValue = Math.max(...Object.values(expenseCategories), 100);
 
+  // Markdown parsing utility
+  const parseMarkdown = (md) => {
+    if (!md) return '';
+    let html = md;
+    
+    // Parse tables
+    const lines = html.split('\n');
+    let inTable = false;
+    let tableHtml = '';
+    const processedLines = [];
+    
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim();
+      if (line.startsWith('|') && line.endsWith('|')) {
+        if (!inTable) {
+          inTable = true;
+          tableHtml = '<table><thead>';
+        }
+        
+        const cells = line.split('|').slice(1, -1).map(c => c.trim());
+        
+        // Separator row check
+        if (cells.every(c => /^:-*|-*:-*|-*:$/.test(c))) {
+          tableHtml = tableHtml.replace('</table><thead>', '</thead><tbody>');
+          continue;
+        }
+        
+        const isHeader = tableHtml.includes('<thead>') && !tableHtml.includes('</thead>');
+        const cellTag = isHeader ? 'th' : 'td';
+        
+        tableHtml += 'tr';
+        cells.forEach(cell => {
+          tableHtml += `<${cellTag}>${cell}</${cellTag}>`;
+        });
+        tableHtml += '</tr>';
+      } else {
+        if (inTable) {
+          inTable = false;
+          tableHtml += '</tbody></table>';
+          processedLines.push(tableHtml);
+          tableHtml = '';
+        }
+        processedLines.push(lines[i]);
+      }
+    }
+    if (inTable) {
+      tableHtml += '</tbody></table>';
+      processedLines.push(tableHtml);
+    }
+    
+    html = processedLines.join('\n');
+
+    // Headers
+    html = html.replace(/^### (.*$)/gim, '<h4>$1</h4>');
+    html = html.replace(/^## (.*$)/gim, '<h3>$1</h3>');
+    html = html.replace(/^# (.*$)/gim, '<h2>$1</h2>');
+    
+    // Bold
+    html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    
+    // Alerts/Quotes
+    html = html.replace(/^> \[\!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*(.*$)/gim, '<blockquote><strong>$1</strong>: $2');
+    html = html.replace(/^> (.*$)/gim, '<blockquote>$2</blockquote>');
+    
+    // Lists
+    let inList = false;
+    const listProcessed = [];
+    const listLines = html.split('\n');
+    for (let i = 0; i < listLines.length; i++) {
+      const line = listLines[i];
+      const match = line.match(/^[-*]\s+(.*)$/);
+      if (match) {
+        if (!inList) {
+          inList = true;
+          listProcessed.push('<ul>');
+        }
+        listProcessed.push(`<li>${match[1]}</li>`);
+      } else {
+        if (inList) {
+          inList = false;
+          listProcessed.push('</ul>');
+        }
+        listProcessed.push(line);
+      }
+    }
+    if (inList) {
+      listProcessed.push('</ul>');
+    }
+    html = listProcessed.join('\n');
+    
+    // Paragraph spacing
+    html = html.replace(/\n\n/g, '<br />');
+
+    return html;
+  };
+
   // Authentication View
   if (!token) {
     return (
       <div className="auth-wrapper">
         <div className="glass-panel auth-card">
           <div className="auth-header">
-            <span className="brand-logo">💎</span>
+            <span className="brand-logo" style={{ marginBottom: '12px' }}>
+              <DiamondIcon />
+            </span>
             <h2>AuraWealth</h2>
-            <p style={{ color: 'var(--text-secondary)', marginTop: '8px' }}>
+            <p style={{ color: 'var(--text-secondary)', marginTop: '8px', fontSize: '13px' }}>
               {isLoginView ? 'Welcome back! Sign in to analyze your assets.' : 'Create an account to start wealth planning.'}
             </p>
           </div>
@@ -435,29 +624,29 @@ export default function App() {
       {/* Sidebar Navigation */}
       <aside className="sidebar">
         <div className="brand-container">
-          <span className="brand-logo">💎</span>
+          <DiamondIcon />
           <span className="brand-name">AuraWealth</span>
         </div>
 
         <ul className="nav-menu">
           <li className={`nav-item ${activeTab === 'dashboard' ? 'active' : ''}`} onClick={() => setActiveTab('dashboard')}>
-            <span className="nav-icon">📊</span>
+            <span className="nav-icon"><DashboardIcon /></span>
             <span className="nav-text">Dashboard</span>
           </li>
           <li className={`nav-item ${activeTab === 'transactions' ? 'active' : ''}`} onClick={() => setActiveTab('transactions')}>
-            <span className="nav-icon">💸</span>
+            <span className="nav-icon"><TransactionsIcon /></span>
             <span className="nav-text">Transactions</span>
           </li>
           <li className={`nav-item ${activeTab === 'budgets' ? 'active' : ''}`} onClick={() => setActiveTab('budgets')}>
-            <span className="nav-icon">📝</span>
+            <span className="nav-icon"><BudgetsIcon /></span>
             <span className="nav-text">Budgets</span>
           </li>
           <li className={`nav-item ${activeTab === 'goals' ? 'active' : ''}`} onClick={() => setActiveTab('goals')}>
-            <span className="nav-icon">🎯</span>
+            <span className="nav-icon"><GoalsIcon /></span>
             <span className="nav-text">Goals</span>
           </li>
           <li className={`nav-item ${activeTab === 'profile' ? 'active' : ''}`} onClick={() => setActiveTab('profile')}>
-            <span className="nav-icon">👤</span>
+            <span className="nav-icon"><RiskProfileIcon /></span>
             <span className="nav-text">Risk Profile</span>
           </li>
         </ul>
@@ -469,13 +658,13 @@ export default function App() {
             <div className="user-status">Aura Pro User</div>
           </div>
           <button className="btn-logout" onClick={handleLogout} title="Sign Out">
-            🚪
+            <LogoutIcon />
           </button>
         </div>
       </aside>
 
       {/* Main View Area */}
-      <main className="main-content">
+      <main className={`main-content ${isChatOpen ? 'ai-open' : ''}`}>
         <header className="dashboard-header">
           <div className="header-title">
             <h1>{activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Dashboard</h1>
@@ -483,10 +672,10 @@ export default function App() {
           </div>
           <div style={{ display: 'flex', gap: '12px' }}>
             <button onClick={compileAdvisory} disabled={isCompiling} className="btn btn-secondary">
-              {isCompiling ? 'Analyzing Graph...' : '⚡ Sync AI Advice'}
+              <SparklesIcon /> {isCompiling ? 'Analyzing Graph...' : 'Sync AI Advice'}
             </button>
-            <button onClick={() => setIsChatOpen(true)} className="btn btn-primary">
-              💬 Ask AI Advisor
+            <button onClick={() => setIsChatOpen(!isChatOpen)} className="btn btn-primary">
+              <ChatIcon /> {isChatOpen ? 'Close Assistant' : 'Ask AI Advisor'}
             </button>
           </div>
         </header>
@@ -504,20 +693,22 @@ export default function App() {
                 <div className="metric-value">${totalIncome.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
                 <div className="metric-change positive">Active Payroll surplus</div>
               </div>
-              <div className="glass-panel metric-card warning">
+              <div className="glass-panel metric-card">
                 <div className="metric-label">Monthly Spending</div>
                 <div className="metric-value">${totalExpense.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
                 <div className="metric-change negative">Capital outflows</div>
               </div>
-              <div className="glass-panel metric-card success">
+              <div className="glass-panel metric-card">
                 <div className="metric-label">Net Monthly Savings</div>
                 <div className="metric-value">${netSavings.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
                 <div className="metric-change positive">Surplus margin</div>
               </div>
-              <div className={`glass-panel metric-card ${savingsRate >= 20 ? 'success' : 'danger'}`}>
+              <div className="glass-panel metric-card">
                 <div className="metric-label">Savings Velocity</div>
                 <div className="metric-value">{savingsRate.toFixed(1)}%</div>
-                <div className="metric-change">Target benchmark: 20%</div>
+                <div className={`metric-change ${savingsRate >= 20 ? 'positive' : 'negative'}`}>
+                  Target benchmark: 20%
+                </div>
               </div>
             </div>
 
@@ -533,7 +724,7 @@ export default function App() {
                       <div className="chart-bar-col" key={cat}>
                         <div
                           className="chart-bar-rect"
-                          style={{ height: `${(val / maxCategoryValue) * 160}px` }}
+                          style={{ height: `${(val / maxCategoryValue) * 140}px` }}
                         ></div>
                         <div className="chart-bar-label">
                           <strong>${val.toFixed(0)}</strong>
@@ -550,13 +741,13 @@ export default function App() {
               <div className="glass-panel">
                 <div className="panel-title">Advisor Status</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                  <div style={{ background: 'rgba(255,255,255,0.03)', padding: '16px', borderRadius: '10px', border: '1px solid var(--border-glass)' }}>
-                    <div style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>Asset Risk profile</div>
-                    <div style={{ fontSize: '18px', fontWeight: 'bold', marginTop: '4px', color: 'var(--primary)' }}>{profile.risk_tolerance} Allocation</div>
+                  <div style={{ background: 'var(--bg-dark)', padding: '16px', borderRadius: '10px', border: '1px solid var(--border-subtle)' }}>
+                    <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase' }}>Asset Risk profile</div>
+                    <div style={{ fontSize: '18px', fontWeight: 'bold', marginTop: '6px', color: 'var(--primary)' }}>{profile.risk_tolerance} Allocation</div>
                   </div>
-                  <div style={{ background: 'rgba(255,255,255,0.03)', padding: '16px', borderRadius: '10px', border: '1px solid var(--border-glass)' }}>
-                    <div style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>Budget Compliance</div>
-                    <div style={{ fontSize: '18px', fontWeight: 'bold', marginTop: '4px', color: '#10b981' }}>
+                  <div style={{ background: 'var(--bg-dark)', padding: '16px', borderRadius: '10px', border: '1px solid var(--border-subtle)' }}>
+                    <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase' }}>Budget Compliance</div>
+                    <div style={{ fontSize: '18px', fontWeight: 'bold', marginTop: '6px', color: 'var(--accent-emerald)' }}>
                       {budgets.length > 0 ? `${budgets.length} Categories Monitored` : 'No Active Budgets'}
                     </div>
                   </div>
@@ -568,27 +759,14 @@ export default function App() {
             {/* Core Advisor Report compiler output */}
             <div className="glass-panel" style={{ marginTop: '24px' }}>
               <div className="panel-title">
-                <span>💎 compiled wealth advice report</span>
-                <span style={{ fontSize: '12px', fontWeight: 'normal', color: 'var(--text-muted)' }}>LangGraph State Output</span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><SparklesIcon /> Compiled Wealth Advice Report</span>
+                <span style={{ fontSize: '11px', fontWeight: '500', color: 'var(--text-muted)' }}>LangGraph State Output</span>
               </div>
               {advisorReport ? (
-                <div className="advisor-report-container">
-                  <div dangerouslySetInnerHTML={{ 
-                    __html: advisorReport
-                      .replace(/# (.*)/g, '<h2>$1</h2>')
-                      .replace(/## (.*)/g, '<h3>$1</h3>')
-                      .replace(/### (.*)/g, '<h4>$1</h4>')
-                      .replace(/- \*\*(.*?)\*\*:(.*)/g, '<li><strong>$1</strong>: $2</li>')
-                      .replace(/> \[!(NOTE|WARNING|CAUTION|TIP)\]/g, '<blockquote>')
-                      .replace(/\| (.*) \|/g, (match) => {
-                        // Very basic table parser helper
-                        return match;
-                      })
-                  }} />
-                </div>
+                <div className="advisor-report-container" dangerouslySetInnerHTML={{ __html: parseMarkdown(advisorReport) }} />
               ) : (
                 <div style={{ textAlign: 'center', padding: '40px' }}>
-                  <p style={{ color: 'var(--text-secondary)', marginBottom: '16px' }}>No advice compiled. Trigger the LangGraph multi-agent analyzer to synthesize your financial data.</p>
+                  <p style={{ color: 'var(--text-secondary)', marginBottom: '16px', fontSize: '14px' }}>No advice compiled. Trigger the LangGraph multi-agent analyzer to synthesize your financial data.</p>
                   <button onClick={compileAdvisory} className="btn btn-primary" disabled={isCompiling}>
                     {isCompiling ? 'Running AI Engine...' : 'Run LangGraph Multi-Agent Analysis'}
                   </button>
@@ -599,7 +777,7 @@ export default function App() {
         )}
 
         {activeTab === 'transactions' && (
-          <div className="content-grid equal">
+          <div className="content-grid">
             {/* Input Form */}
             <div className="glass-panel">
               <div className="panel-title">Add Transaction</div>
@@ -669,9 +847,9 @@ export default function App() {
               </form>
 
               {/* CSV Upload */}
-              <div style={{ marginTop: '24px', paddingTop: '24px', borderTop: '1px solid var(--border-glass)' }}>
-                <div className="panel-title" style={{ fontSize: '16px' }}>Import CSV Statements</div>
-                <p style={{ fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '12px' }}>
+              <div style={{ marginTop: '24px', paddingTop: '24px', borderTop: '1px solid var(--border-subtle)' }}>
+                <div className="panel-title" style={{ fontSize: '15px', marginBottom: '8px' }}>Import CSV Statements</div>
+                <p style={{ fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '14px', lineHeight: '1.4' }}>
                   Upload a standard bank statement. Expected columns: <code>amount, category, date (YYYY-MM-DD), type, description</code>
                 </p>
                 <input
@@ -682,7 +860,7 @@ export default function App() {
                   onChange={handleCSVUpload}
                 />
                 <button onClick={() => fileInputRef.current.click()} className="btn btn-secondary" style={{ width: '100%' }}>
-                  📤 Choose CSV File
+                  <UploadIcon /> Choose CSV File
                 </button>
               </div>
             </div>
@@ -711,13 +889,13 @@ export default function App() {
                           <td>{tx.date}</td>
                           <td>{tx.description}</td>
                           <td>{tx.category}</td>
-                          <td style={{ fontWeight: 'bold' }}>${tx.amount.toFixed(2)}</td>
+                          <td style={{ fontWeight: 'bold', color: 'var(--text-primary)' }}>${tx.amount.toFixed(2)}</td>
                           <td>
                             <span className={`badge badge-${tx.type}`}>{tx.type}</span>
                           </td>
-                          <td>
-                            <button onClick={() => deleteTransaction(tx.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--accent-rose)' }}>
-                              🗑️
+                          <td style={{ textAlign: 'right' }}>
+                            <button onClick={() => deleteTransaction(tx.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px' }}>
+                              <TrashIcon />
                             </button>
                           </td>
                         </tr>
@@ -731,7 +909,7 @@ export default function App() {
         )}
 
         {activeTab === 'budgets' && (
-          <div className="content-grid equal">
+          <div className="content-grid">
             {/* Create Budget */}
             <div className="glass-panel">
               <div className="panel-title">Set Category Limit</div>
@@ -773,16 +951,16 @@ export default function App() {
               {budgets.length === 0 ? (
                 <p style={{ color: 'var(--text-secondary)', textAlign: 'center', padding: '40px' }}>No active budgets defined.</p>
               ) : (
-                <div style={{ display: 'flex', flexcolumn: 'column', gap: '20px', width: '100%' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '100%' }}>
                   {budgets.map((b) => {
                     const spent = b.spent_amount || 0;
                     const pct = Math.min(100, (spent / b.limit_amount) * 100);
                     return (
-                      <div key={b.id} style={{ width: '100%', borderBottom: '1px solid rgba(255,255,255,0.03)', paddingBottom: '12px' }}>
+                      <div key={b.id} style={{ width: '100%', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '16px' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                          <span style={{ fontWeight: '600' }}>{b.category}</span>
+                          <span style={{ fontWeight: '600', fontSize: '14.5px' }}>{b.category}</span>
                           <button onClick={() => deleteBudget(b.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)' }}>
-                            🗑️
+                            <TrashIcon />
                           </button>
                         </div>
                         <div className="progress-container">
@@ -807,7 +985,7 @@ export default function App() {
         )}
 
         {activeTab === 'goals' && (
-          <div className="content-grid equal">
+          <div className="content-grid">
             {/* Create Goal */}
             <div className="glass-panel">
               <div className="panel-title">Create Goal Target</div>
@@ -868,22 +1046,22 @@ export default function App() {
                   {goals.map((g) => {
                     const pct = Math.min(100, (g.current_amount / g.target_amount) * 100);
                     return (
-                      <div key={g.id} style={{ background: 'rgba(255,255,255,0.02)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-glass)' }}>
+                      <div key={g.id} style={{ background: 'var(--bg-dark)', padding: '20px', borderRadius: '12px', border: '1px solid var(--border-subtle)' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                          <span style={{ fontWeight: 'bold', fontSize: '16px' }}>{g.name}</span>
-                          <div style={{ display: 'flex', gap: '10px' }}>
+                          <span style={{ fontWeight: 'bold', fontSize: '15px', color: 'var(--text-primary)' }}>{g.name}</span>
+                          <div style={{ display: 'flex', gap: '12px' }}>
                             <button onClick={() => {
                               const amount = prompt('Enter new current balance:', g.current_amount);
                               if (amount !== null) updateGoalProgress(g.id, amount);
-                            }} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--primary)' }}>
-                              ✏️ Update Progress
+                            }} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--primary)', fontSize: '12px', fontWeight: '600' }}>
+                              <EditIcon /> Update
                             </button>
-                            <button onClick={() => deleteGoal(g.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)' }}>
-                              🗑️
+                            <button onClick={() => deleteGoal(g.id)} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
+                              <TrashIcon />
                             </button>
                           </div>
                         </div>
-                        <div style={{ fontSize: '13px', color: 'var(--text-secondary)', marginTop: '4px' }}>Target Date: {g.target_date}</div>
+                        <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '4px', fontWeight: '500' }}>Target Date: {g.target_date}</div>
                         <div className="progress-container">
                           <div className="progress-label">
                             <span>Saved: ${g.current_amount.toLocaleString()} / Target: ${g.target_amount.toLocaleString()}</span>
@@ -903,7 +1081,7 @@ export default function App() {
         )}
 
         {activeTab === 'profile' && (
-          <div className="content-grid equal">
+          <div className="content-grid">
             <div className="glass-panel">
               <div className="panel-title">Asset Risk & Financial Profile</div>
               <form onSubmit={saveProfile}>
@@ -918,7 +1096,7 @@ export default function App() {
                   />
                 </div>
                 <div className="form-group">
-                  <label className="form-label">Risk Tolerance Tolerance</label>
+                  <label className="form-label">Risk Tolerance</label>
                   <select
                     className="input-field"
                     value={profile.risk_tolerance}
@@ -956,9 +1134,9 @@ export default function App() {
             </div>
             
             <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '40px', textAlign: 'center' }}>
-              <span style={{ fontSize: '48px', filter: 'drop-shadow(0 0 10px rgba(99,102,241,0.3))' }}>📈</span>
-              <h3 style={{ marginTop: '20px', fontFamily: 'var(--font-display)' }}>Personalized Allocation Guidance</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginTop: '12px', lineHeight: '1.5' }}>
+              <span style={{ display: 'flex', marginBottom: '20px' }}><TrendingUpIcon /></span>
+              <h3 style={{ fontSize: '18px', fontWeight: '700', fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}>Personalized Allocation Guidance</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '13.5px', marginTop: '12px', lineHeight: '1.5' }}>
                 Your risk profile metrics feeds directly into our LangGraph investment advice engine. It adjusts the equity-to-bond ratio automatically depending on age and risk choice.
               </p>
             </div>
@@ -966,10 +1144,10 @@ export default function App() {
         )}
       </main>
 
-      {/* Floating AI Chat Assistant Drawer */}
+      {/* Floating AI Chat Assistant Panel (Right Column) */}
       <div className={`chat-drawer ${isChatOpen ? 'open' : ''}`}>
         <div className="chat-header">
-          <h3>💬 Aura Wealth Advisor</h3>
+          <h3><SparklesIcon /> Aura Wealth Advisor</h3>
           <button className="chat-close" onClick={() => setIsChatOpen(false)}>✕</button>
         </div>
 
@@ -994,7 +1172,7 @@ export default function App() {
             value={chatInput}
             onChange={(e) => setChatInput(e.target.value)}
           />
-          <button type="submit" className="btn btn-primary">Send</button>
+          <button type="submit" className="btn btn-primary" style={{ padding: '10px 14px' }}>Send</button>
         </form>
       </div>
     </div>
